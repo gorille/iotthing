@@ -1,0 +1,43 @@
+group 'com.acme'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring JMS deps
+    compile "org.springframework.boot:spring-boot-starter-activemq"
+    compile "org.apache.activemq:activemq-broker"
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile 'javax.transaction:transaction-api:1.1'
+
+    // Groovy runtime
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+
+    // Mongo / Spring data deps
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+
+    // REST controller deps
+    compile "org.springframework.boot:spring-boot-starter-web"
+
+    // dev Tools for code reloading
+    compile "org.springframework.boot:spring-boot-devtools"
+}
